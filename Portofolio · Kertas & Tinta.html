@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portofolio · Kertas &amp; Tinta</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f6f0e4;--surface:#fffaf0;--ink:#1f2a24;--mute:#5f6b63;--line:#ded3bd;--accent:#2f5d46;--accent2:#c4562f;--on:#fffaf0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141816;--surface:#1c221f;--ink:#ece6d6;--mute:#9aa59d;--line:#2e3833;--accent:#7fc29a;--accent2:#ee8a62;--on:#10150f}}
+:root[data-theme="dark"]{--bg:#141816;--surface:#1c221f;--ink:#ece6d6;--mute:#9aa59d;--line:#2e3833;--accent:#7fc29a;--accent2:#ee8a62;--on:#10150f}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0}
+a{color:var(--accent)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:18px;padding:12px 20px}
+nav .logo{font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}
+nav .links{display:flex;gap:16px;overflow-x:auto;flex:1;scrollbar-width:none}
+nav .links a{color:var(--mute);text-decoration:none;font-size:14px;white-space:nowrap}
+nav .links a:hover{color:var(--accent2)}
+.btn{font:600 14px Inter,sans-serif;border:1.5px solid var(--accent);background:var(--accent);color:var(--on);padding:9px 18px;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.sm{padding:5px 12px;font-size:12px}
+.btn.del{border-color:var(--accent2);color:var(--accent2);background:transparent}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.hero{padding:84px 0 64px;border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);font-weight:600}
+.hero h1{font-size:clamp(40px,8vw,76px);margin:14px 0 12px;font-weight:700}
+.hero p{font-size:20px;color:var(--mute);max-width:620px;margin:0 0 28px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:56px 0 8px}
+.sh{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:22px}
+.sh .n{font-family:Fraunces,Georgia,serif;color:var(--accent2);font-size:18px}
+.sh h2{font-size:30px}
+.sh small{margin-left:auto;color:var(--mute);font-size:13px}
+.about{font-size:18px;max-width:720px;white-space:pre-wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.card .per{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);font-weight:600}
+.card h3{font-size:20px}
+.card .sub{color:var(--accent);font-weight:500;font-size:14px}
+.card p{margin:2px 0;color:var(--mute);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:14px;display:flex;gap:8px;align-items:center}
+.chip i{font-style:normal;color:var(--accent2);font-size:12px}
+.empty{color:var(--mute);font-style:italic;border:1.5px dashed var(--line);border-radius:14px;padding:18px}
+.admin{background:var(--surface);border:1.5px dashed var(--accent);border-radius:14px;padding:16px;margin-top:16px;display:grid;gap:8px}
+.admin .f{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+input,textarea{font:15px Inter,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 11px;width:100%}
+textarea{min-height:80px;resize:vertical}
+.admin b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+footer{margin-top:72px;border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mute);font-size:14px;text-align:center}
+.bar{background:var(--accent2);color:#fff;text-align:center;padding:8px;font-size:14px}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#home">Portofolio.</a>
+  <div class="links" id="links"></div>
+  <button class="btn sm ghost" id="adminBtn" hidden>Admin</button>
+</nav>
+<div class="bar" id="bar" hidden>Mode Admin aktif · perubahan langsung tersimpan ke database</div>
+<main class="wrap" id="app"></main>
+<footer>© Portofolio pribadi · dibangun untuk terus bertumbuh.</footer>
+<script>
+const SECTIONS=[
+["about","01","Tentang Saya","Perkenalan"],
+["education","02","Pendidikan","Latar akademik"],
+["experience","03","Pengalaman Kerja","Perjalanan profesional"],
+["organization","04","Organisasi","Komunitas & kepemimpinan"],
+["achievements","05","Prestasi","Penghargaan"],
+["certifications","06","Sertifikasi","Kredensial"],
+["projects","07","Proyek","Karya pilihan"],
+["skills","08","Keahlian","Kemampuan"],
+["publications","09","Publikasi","Tulisan & riset"],
+["gallery","10","Galeri","Arsip visual"],
+["contact","11","Kontak","Mari terhubung"]];
+let db=null,profile={},items=[],canEdit=false,edit=false,armed=null;
+
+const h=(t,a={},...c)=>{const e=document.createElement(t);for(const k in a){if(k==="class")e.className=a[k];else if(k.startsWith("on"))e.addEventListener(k.slice(2),a[k]);else e.setAttribute(k,a[k])}c.flat().forEach(x=>{if(x==null||x===false)return;e.append(x.nodeType?x:document.createTextNode(x))});return e};
+const safeUrl=u=>/^https:\/\//i.test(u||"")?u:null;
+
+function profileForm(){
+  const f={name:h("input",{placeholder:"Nama lengkap",value:profile.name||""}),
+    headline:h("input",{placeholder:"Headline / bidang profesional",value:profile.headline||""}),
+    email:h("input",{placeholder:"Email",value:profile.email||""})};
+  const about=h("textarea",{placeholder:"Tulis tentang dirimu…"});about.value=profile.about||"";
+  return h("div",{class:"admin"},h("b",{},"Profil"),h("div",{class:"f"},f.name,f.headline,f.email),about,
+    h("div",{},h("button",{class:"btn sm",onclick:async e=>{
+      const b=e.target;b.textContent="Menyimpan…";
+      try{await db.doc("site/profile").set({name:f.name.value.trim(),headline:f.headline.value.trim(),email:f.email.value.trim(),about:about.value.trim()});b.textContent="Tersimpan ✓"}catch(x){b.textContent="Gagal menyimpan"}
+    }},"Simpan profil")));
+}
+function itemForm(sec){
+  const i={title:h("input",{placeholder:"Judul / nama"}),sub:h("input",{placeholder:"Subjudul (instansi, peran)"}),
+    period:h("input",{placeholder:"Periode (mis. 2023 – sekarang)"}),link:h("input",{placeholder:"Tautan https:// (opsional)"})};
+  const desc=h("textarea",{placeholder:"Deskripsi singkat"});
+  return h("div",{class:"admin"},h("b",{},"+ Tambah ke bagian ini"),h("div",{class:"f"},i.title,i.sub,i.period,i.link),desc,
+    h("div",{},h("button",{class:"btn sm",onclick:async e=>{
+      if(!i.title.value.trim())return;
+      const id="i"+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+      try{await db.doc("items/"+id).set({section:sec,title:i.title.value.trim(),sub:i.sub.value.trim(),period:i.period.value.trim(),link:i.link.value.trim(),desc:desc.value.trim(),ts:Date.now()})}catch(x){e.target.textContent="Gagal"}
+    }},"Tambah")));
+}
+function delBtn(it){
+  return h("button",{class:"btn sm del",onclick:async e=>{
+    if(armed!==it.id){armed=it.id;e.target.textContent="Yakin hapus?";return}
+    armed=null;try{await db.doc("items/"+it.id).delete()}catch(x){e.target.textContent="Gagal"}
+  }},"Hapus");
+}
+function card(it){
+  const u=safeUrl(it.link);
+  return h("div",{class:"card"},it.period&&h("div",{class:"per"},it.period),h("h3",{},it.title),it.sub&&h("div",{class:"sub"},it.sub),
+    it.desc&&h("p",{},it.desc),u&&h("a",{href:u,target:"_blank",rel:"noopener"},"Buka tautan ↗"),edit&&h("div",{},delBtn(it)));
+}
+function chip(it){return h("span",{class:"chip"},it.title,it.sub&&h("i",{},it.sub),edit&&h("button",{class:"btn sm del",onclick:()=>{if(armed!==it.id){armed=it.id;render();return}armed=null;db.doc("items/"+it.id).delete()}},armed===it.id?"Yakin?":"×"))}
+
+function render(){
+  const app=document.getElementById("app");app.replaceChildren();
+  document.title=(profile.name||"Portofolio")+" · Portofolio";
+  document.getElementById("links").replaceChildren(...SECTIONS.map(s=>h("a",{href:"#"+s[0]},s[2])));
+  document.getElementById("adminBtn").hidden=!canEdit;
+  document.getElementById("adminBtn").textContent=edit?"Selesai":"Admin";
+  document.getElementById("bar").hidden=!edit;
+  app.append(h("div",{class:"hero",id:"home"},h("div",{class:"kicker"},"Portofolio pribadi / Profil"),
+    h("h1",{},profile.name||"Nama Lengkap"),
+    h("p",{},profile.headline||"Tambahkan tagline singkat lewat mode Admin untuk memperkenalkan diri."),
+    h("div",{class:"row"},h("a",{class:"btn",href:"#projects"},"Lihat Proyek"),h("a",{class:"btn ghost",href:"#contact"},"Hubungi Saya"))),
+    edit&&profileForm());
+  for(const [id,n,title,label] of SECTIONS){
+    const list=items.filter(x=>x.section===id).sort((a,b)=>(b.ts||0)-(a.ts||0));
+    const sec=h("section",{id},h("div",{class:"sh"},h("span",{class:"n"},n),h("h2",{},title),h("small",{},label)));
+    if(id==="about"){
+      sec.append(profile.about?h("p",{class:"about"},profile.about):h("div",{class:"empty"},"Informasi tentang diri akan tampil di sini setelah kamu mengisinya lewat mode Admin."));
+    }else{
+      if(id==="contact"&&profile.email)sec.append(h("p",{},"Email: ",h("a",{href:"mailto:"+profile.email},profile.email)));
+      if(!list.length&&!(id==="contact"&&profile.email))sec.append(h("div",{class:"empty"},"Belum ada data di bagian ini."));
+      else if(id==="skills")sec.append(h("div",{class:"chips"},list.map(chip)));
+      else if(list.length)sec.append(h("div",{class:"grid"},list.map(card)));
+    }
+    if(edit&&id!=="about")sec.append(itemForm(id));
+    app.append(sec);
+  }
+}
+document.getElementById("adminBtn").addEventListener("click",()=>{edit=!edit;armed=null;render()});
+render();
+
+(async()=>{
+  try{const user=await claude.use("user");canEdit=!!(await user?.canEdit())}catch(e){}
+  try{db=await claude.use("db")}catch(e){}
+  if(!db){render();return}
+  db.doc("site/profile").onSnapshot(s=>{profile=s.exists?s.data():{};if(!edit||!document.activeElement||document.activeElement===document.body)render();else{document.title=(profile.name||"Portofolio")+" · Portofolio"}},()=>{});
+  db.collection("items").onSnapshot(s=>{items=s.docs.map(d=>({id:d.id,...d.data()}));render()},()=>{});
+  render();
+})();
+</script>
+</body>
+</html>
